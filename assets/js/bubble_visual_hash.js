@@ -95,22 +95,40 @@ createBubbleInfo = function (hashGroup, n, w, h) {
 }
 
 
+var bubbleDrawCount = 0;
 drawBubble = function (svg, bubbleInfo) {
-    //  Sort bubbles by radius in descending order
-    bubbleInfo.sort(function (a, b) {
-        return b.radius - a.radius;
-    });
-    for (var i = 0; i < bubbleInfo.length; i++) {
-        var bubble = bubbleInfo[i];
-        var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("cx", bubble.x);
-        circle.setAttribute("cy", bubble.y);
-        circle.setAttribute("r", bubble.radius);
-        circle.setAttribute("fill", bubble.color);
-        circle.setAttribute("fill-opacity", 0.75);
+    var namespace = 'http://www.w3.org/2000/svg';
+    var defs = document.createElementNS(namespace, 'defs');
+    var prefix = 'aero-bubble-' + bubbleDrawCount++ + '-';
+    svg.appendChild(defs);
+    bubbleInfo.sort(function (a, b) { return b.radius - a.radius; });
+    bubbleInfo.forEach(function (bubble, i) {
+        var gradient = document.createElementNS(namespace, 'radialGradient');
+        gradient.id = prefix + i;
+        gradient.setAttribute('cx', '45%');
+        gradient.setAttribute('cy', '45%');
+        gradient.setAttribute('r', '65%');
+        gradient.setAttribute('fx', '28%');
+        gradient.setAttribute('fy', '23%');
+        [['0%', '#ffffff', '0.95'], ['30%', bubble.color, '0.4'], ['80%', bubble.color, '0.8'], ['100%', bubble.color, '0.95']].forEach(function (values) {
+            var stop = document.createElementNS(namespace, 'stop');
+            stop.setAttribute('offset', values[0]);
+            stop.setAttribute('stop-color', values[1]);
+            stop.setAttribute('stop-opacity', values[2]);
+            gradient.appendChild(stop);
+        });
+        defs.appendChild(gradient);
+        var circle = document.createElementNS(namespace, 'circle');
+        circle.setAttribute('cx', bubble.x);
+        circle.setAttribute('cy', bubble.y);
+        circle.setAttribute('r', bubble.radius);
+        circle.setAttribute('fill', 'url(#' + gradient.id + ')');
+        circle.setAttribute('stroke', '#ffffff');
+        circle.setAttribute('stroke-opacity', '0.65');
         svg.appendChild(circle);
-    }
-}
+    });
+};
+
 
 var canvases = document.querySelectorAll(".bubble-visual-hash");
 canvases.forEach(function (canvas) {

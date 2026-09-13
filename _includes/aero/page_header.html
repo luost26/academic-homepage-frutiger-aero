@@ -1,0 +1,10 @@
+<header class="aero-masthead">
+    {% assign page_icon = 'home' %}
+    {% case page.navbar_title %}
+        {% when 'Publications' %}{% assign page_icon = 'publications' %}
+        {% when 'Blog' %}{% assign page_icon = 'blog' %}
+        {% when 'Showcase' %}{% assign page_icon = 'showcase' %}
+    {% endcase %}
+    {% include aero/icon.html name=page_icon class='aero-icon--large' %}
+    <h1>{{ page.navbar_title | default: page.title | escape }}</h1>
+</header>

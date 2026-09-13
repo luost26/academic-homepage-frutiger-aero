@@ -3,14 +3,14 @@
 {% assign first = include.first %}
 {% assign last = include.last %}
 
-<div class="border-bottom border-gray p-3 {% if hide_bottom_border %}border-0{% endif %}">
+<div class="aero-blog-card{% unless hide_bottom_border %} aero-item-divider{% endunless %}">
     <div class="row">
         <div class="col-12">
-            <h5 class="mb-2">
-                <a href="{{ item.url | relative_url }}" class="text-dark text-decoration-none">
+            <h3 class="mb-2">
+                <a href="{{ item.url | relative_url }}" class="aero-blog-title">
                     {{ item.title }}
                 </a>
-            </h5>
+            </h3>
             <div class="text-muted small mb-2">
                 <i class="fas fa-calendar-alt"></i> {{ item.date | date: "%B %d, %Y" }}
                 {% if item.tags %}
@@ -31,7 +31,7 @@
             </div>
             <div class="mt-2">
                 <a href="{{ item.url | relative_url }}">
-                    Read more <i class="fas fa-angle-double-right"></i>
+                    Read more <span aria-hidden="true">›</span>
                 </a>
             </div>
         </div>

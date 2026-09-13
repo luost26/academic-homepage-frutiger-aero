@@ -1,57 +1,43 @@
 (function () {
+    'use strict';
     var tocList = document.querySelector('.blog-toc-list');
-    if (!tocList) return;
-
     var content = document.querySelector('.blog-content');
-    var headings = content.querySelectorAll('h1, h2, h3');
-    var navbarHeight = 90;
-
-    if (headings.length === 0) {
-        document.getElementById('blog-toc').style.display = 'none';
+    if (!tocList || !content) return;
+    var headings = Array.from(content.querySelectorAll('h1, h2, h3'));
+    var toc = document.getElementById('blog-toc');
+    if (!headings.length) {
+        toc.hidden = true;
         return;
     }
-
-    // Add scroll-margin to all headings so anchor links clear the navbar
     headings.forEach(function (heading, i) {
-        if (!heading.id) {
-            heading.id = 'heading-' + i;
-        }
-        heading.style.scrollMarginTop = navbarHeight + 'px';
-
+        if (!heading.id) heading.id = 'heading-' + i;
         var li = document.createElement('li');
         var a = document.createElement('a');
         a.href = '#' + heading.id;
         a.textContent = heading.textContent;
         a.className = 'toc-' + heading.tagName.toLowerCase();
-        a.addEventListener('click', function (e) {
-            e.preventDefault();
-            var target = document.getElementById(heading.id);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - navbarHeight,
-                    behavior: 'smooth'
-                });
-                history.pushState(null, null, '#' + heading.id);
-            }
-        });
         li.appendChild(a);
         tocList.appendChild(li);
     });
-
-    // Highlight active heading on scroll
-    var tocLinks = tocList.querySelectorAll('a');
+    var links = Array.from(tocList.querySelectorAll('a'));
     function updateActive() {
-        var scrollPos = window.scrollY + navbarHeight + 10;
-        var current = null;
+        var current = headings[0];
         headings.forEach(function (heading) {
-            if (heading.offsetTop <= scrollPos) {
-                current = heading.id;
-            }
+            if (heading.getBoundingClientRect().top <= 12) current = heading;
         });
-        tocLinks.forEach(function (link) {
-            link.classList.toggle('toc-active', link.getAttribute('href') === '#' + current);
+        links.forEach(function (link) {
+            var active = link.getAttribute('href') === '#' + current.id;
+            link.classList.toggle('toc-active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
         });
     }
-    window.addEventListener('scroll', updateActive, { passive: true });
+    var scheduled = false;
+    window.addEventListener('scroll', function () {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(function () { updateActive(); scheduled = false; });
+    }, { passive: true });
+    window.addEventListener('resize', updateActive);
     updateActive();
-})();
+}());

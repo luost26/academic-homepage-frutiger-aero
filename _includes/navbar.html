@@ -1,18 +1,36 @@
-<nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
-    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
-        <a class="navbar-brand"><strong>{{site.data.profile.navbar_name}}</strong></a>
-        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-map"></i> Menu
+<header class="aero-header">
+    <div class="aero-title-strip">
+        <a class="aero-brand" href="{{ '/' | relative_url }}">
+            {% include aero/icon.html name='website' %}
+            <span>{{ site.data.profile.navbar_name | escape }}</span>
+        </a>
+        {% if site.data.profile.positions.first.name %}
+        <span class="aero-affiliation">{{ site.data.profile.positions.first.name | strip_html | escape }}</span>
+        {% endif %}
+        <button class="aero-menu-button aero-button" type="button" data-aero-menu aria-controls="navbarResponsive" aria-expanded="false">
+            {% include aero/icon.html name='expand' %} Menu
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                {% for item in site.data.navigation.pages %}
-                <li class="nav-item {% if item.name == page.navbar_title or include.active_page == item.name %}active{% endif %}">
-                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
     </div>
-</nav>
+    <nav class="aero-navigation" aria-label="Main navigation">
+        <ul class="aero-nav-links" id="navbarResponsive">
+            {% for item in site.data.navigation.pages %}
+            {% assign nav_icon = item.icon | default: 'home' %}
+            {% unless item.icon %}
+                {% case item.name %}
+                    {% when 'Publications' %}{% assign nav_icon = 'publications' %}
+                    {% when 'Blog' %}{% assign nav_icon = 'blog' %}
+                    {% when 'Showcase' %}{% assign nav_icon = 'showcase' %}
+                {% endcase %}
+            {% endunless %}
+            {% assign is_active = false %}
+            {% if item.name == page.navbar_title or item.name == include.active_page %}{% assign is_active = true %}{% endif %}
+            {% if page.layout == 'blog_post' and item.name == 'Blog' %}{% assign is_active = true %}{% endif %}
+            <li>
+                <a class="aero-nav-link{% if is_active %} active{% endif %}" href="{{ item.url | relative_url }}"{% if is_active %} aria-current="page"{% endif %}>
+                    {% include aero/icon.html name=nav_icon %}<span>{{ item.name | escape }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

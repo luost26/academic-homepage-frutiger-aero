@@ -1,152 +1,286 @@
 @charset "utf-8";
+
+:root {
+    --aero-ink: #233e51;
+    --aero-muted: #526b7b;
+    --aero-link: #155b87;
+    --aero-line: #adc6d5;
+    --aero-paper: rgba(250, 253, 254, 0.96);
+    --aero-glass-blur: 22px;
+    --aero-radius: 9px;
+    --aero-shadow: 0 3px 12px rgba(15, 50, 73, 0.12);
+}
+
+html { min-height: 100%; scrollbar-gutter: stable; }
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
     font-weight: 400;
-    padding-top: 5.0rem;
-}
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: 700;
-}
-
-.card {
-    border-radius: 0.8rem!important;
-}
-
-.card-img-overlay {
-    border-radius: 0.8rem!important;
-}
-
-.rounded-xl {
-    border-radius: 0.8rem!important;
-}
-
-.rounded-xl-bottom {
-    border-bottom-right-radius: 0.8rem !important;
-    border-bottom-left-radius: 0.8rem !important;
-}
-
-.rounded-xl-top {
-    border-top-left-radius: 0.8rem !important;
-    border-top-right-radius: 0.8rem !important;
-}
-
-
-.text-profile-position {
-    font-weight: 400;
-}
-
-.text-profile-bio {
-    /* font-family: "Raleway"; */
-    font-weight: 400;
-}
-
-.navbar {
-    background-color: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.inline-badge {
-    height: 16px;
-    vertical-align: -10%;
-    margin-right: 2px;
-    line-break: unset;
-}
-
-.no-break {
-    white-space: nowrap;
-}
-
-.cover-image {
-    width: 180px;
-    max-height: 120px;
-}
-
-.abstract-body {
-    min-height: 100px;
-}
-
-img.lazy {
-    background-image: url('images/loading.gif');
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 50px 50px;
-    min-height: 80px;
-}
-
-div.lazy {
-    background-image: url('images/loading.gif');
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 50px 50px;
-    min-height: 80px;
-}
-
-.badge-publication {
-    font-size: 100%;
-}
-
-.email-text {
-    font-family: Source Code Pro, monospace;
-}
-
-.carousel button {
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-.carousel button:focus {
-    outline: none;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
+    color: var(--aero-ink);
+    background: #114b72;
     padding: 0;
-    background: transparent;
-    border: 0;
+    min-height: 100vh;
 }
-
-.carousel-indicators button {
-    box-sizing: content-box;
-    flex: 0 1 auto;
-    width: 30px;
-    height: 3px;
-    padding: 0;
-    margin: 0 3px;
-    cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    opacity: 0.5;
-    transition: opacity 0.6s ease;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(135deg, rgba(12, 85, 77, 0.24), rgba(4, 42, 75, 0.12)), url('../aero/backgrounds/web/blue-ribbons-1920.webp') center / cover;
 }
-
-.carousel-indicators button.active {
-    opacity: 1;
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 5% 24%, transparent 32px, rgba(215, 255, 255, 0.24) 33px, transparent 35px), radial-gradient(circle at 95% 72%, transparent 53px, rgba(215, 255, 255, 0.17) 54px, transparent 57px), radial-gradient(ellipse at 10% 0, rgba(76, 213, 186, 0.18), transparent 60%);
 }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-weight: 600; line-height: 1.3; }
+a { color: var(--aero-link); }
+a:hover { color: #084466; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #126798; outline-offset: 3px; }
+.text-muted { color: var(--aero-muted) !important; }
+.small, small { font-size: 0.875rem; }
+img { max-width: 100%; }
 
-.carousel-indicators button:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.25);
+.aero-desktop { padding: 24px 22px 36px; }
+.aero-window {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6px;
+    border: 1px solid rgba(239, 253, 255, 0.78);
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(236, 251, 255, 0.3), rgba(174, 212, 238, 0.08));
+    box-shadow: 0 18px 70px rgba(0, 20, 42, 0.42), 0 0 0 1px rgba(10, 35, 60, 0.48), inset 0 0 0 1px rgba(247, 255, 255, 0.38);
+    -webkit-backdrop-filter: blur(var(--aero-glass-blur)) saturate(1.35);
+    backdrop-filter: blur(var(--aero-glass-blur)) saturate(1.35);
 }
+/* The frame supplies one frosted backdrop; the body adds a translucent reflection. */
+.aero-main { padding: 22px; min-width: 0; background: linear-gradient(125deg, rgba(242, 252, 255, 0.22), rgba(194, 226, 247, 0.07) 48%, rgba(220, 241, 255, 0.14)); box-shadow: inset 1px 0 rgba(255, 255, 255, 0.25), inset -1px 0 rgba(255, 255, 255, 0.16); }
+.aero-main:focus { outline: none; }
+.aero-skip-link { position: fixed; top: 8px; left: 16px; z-index: 1100; padding: 10px 16px; background: #fff; border-radius: 5px; transform: translateY(-160%); }
+.aero-skip-link:focus { transform: translateY(0); }
 
-.carousel-control-prev:focus-visible .carousel-control-prev-icon,
-.carousel-control-next:focus-visible .carousel-control-next-icon {
-    outline: 2px solid #fff;
-    outline-offset: 4px;
-    border-radius: 2px;
-    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.25);
+/* A reflective title strip and a pale Explorer-like navigation toolbar. */
+.aero-header {
+    border: 1px solid rgba(5, 41, 65, 0.5);
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(to bottom, rgba(117, 169, 196, 0.84), rgba(33, 83, 118, 0.94) 22%, rgba(19, 58, 87, 0.96) 46%, rgba(15, 48, 77, 0.96) 51%, rgba(32, 76, 106, 0.94));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 4px 12px rgba(0, 23, 46, 0.16);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
 }
+.aero-title-strip { display: flex; align-items: center; gap: 18px; min-height: 53px; padding: 8px 18px; }
+.aero-brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 1.125rem; font-weight: 600; text-shadow: 0 1px 3px #133551; min-width: 0; }
+.aero-brand span { overflow-wrap: anywhere; }
+.aero-brand:hover { color: #fff; text-decoration: none; }
+.aero-brand:focus-visible { outline-color: #fff; }
+.aero-affiliation { margin-left: auto; color: #fff; font-size: 0.875rem; text-shadow: 0 1px 3px #173e57; }
+.aero-navigation { padding: 6px 10px; border-top: 1px solid rgba(255, 255, 255, 0.5); background: linear-gradient(#f2faff, #dcebf4 45%, #c5dbe9 48%, #e1edf5); }
+.aero-nav-links { display: flex; flex-wrap: wrap; gap: 5px; padding: 0; margin: 0; list-style: none; }
+.aero-nav-link { display: flex; align-items: center; gap: 7px; min-height: 40px; padding: 5px 14px; border: 1px solid transparent; border-radius: 5px; color: #254e68; font-size: 0.9375rem; text-shadow: 0 1px #fff; }
+.aero-nav-link:hover { background: linear-gradient(#fff, #d8edf9); border-color: #8eb8ce; color: #123d59; text-decoration: none; box-shadow: inset 0 1px #fff; }
+.aero-nav-link.active { background: linear-gradient(#fcfffa, #e9f6e6 45%, #cfe6c6 48%, #eff8e9); border-color: #88ad7e; color: #274b27; box-shadow: inset 0 1px #fff, 0 1px 2px rgba(40, 72, 50, 0.14); }
+.aero-header .aero-menu-button { display: none; margin-left: auto; }
+.aero-icon { flex-shrink: 0; width: 24px; height: 24px; object-fit: contain; vertical-align: middle; }
+.aero-icon--large { width: 48px; height: 48px; }
+.aero-brand .aero-icon { width: 30px; height: 30px; }
 
+.aero-masthead { display: flex; align-items: center; gap: 16px; min-height: 96px; margin-bottom: 22px; padding: 20px 24px; border: 1px solid rgba(255, 255, 255, 0.84); border-radius: var(--aero-radius); background: linear-gradient(90deg, rgba(10, 69, 74, 0.85), rgba(15, 70, 71, 0.38)), url('../aero/backgrounds/web/grass-bokeh-1440.webp') center 48% / cover; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), var(--aero-shadow); }
+.aero-masthead h1 { margin: 0; color: #fff; font-size: 1.875rem; font-weight: 400; text-shadow: 0 2px 4px rgba(0, 31, 38, 0.65); }
+.aero-panel { border: 1px solid var(--aero-line); border-radius: var(--aero-radius); background: var(--aero-paper); box-shadow: inset 0 1px 0 #fff, var(--aero-shadow); overflow: hidden; }
+.aero-panel-title { display: flex; align-items: center; gap: 9px; padding: 10px 15px; min-height: 46px; border-bottom: 1px solid #abc8da; background: linear-gradient(#f7fcff, #e0f0f8 46%, #c7e1ef 49%, #e6f4fb); color: #224e6b; text-shadow: 0 1px #fff; }
+.aero-panel-title h2 { flex: 1; margin: 0; font-size: 1rem; font-weight: 600; }
+.aero-panel-title h2 .fas { display: none; }
+.aero-panel-body { padding: 22px 24px; }
+.aero-panel-body > :last-child { margin-bottom: 0; }
+.aero-title-link { margin-left: auto; flex-shrink: 0; font-size: 0.875rem; }
+.aero-subheading { color: #295875; font-size: 1rem; margin-bottom: 14px; }
+
+/* Buttons use a bevel and a central reflection rather than flat fills. */
+.aero-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; max-width: 100%; min-height: 36px; padding: 5px 12px; border: 1px solid #8aaec2; border-radius: 5px; color: #1a5275; font-size: 0.875rem; font-family: inherit; line-height: 1.4; background: linear-gradient(#fff, #f2fafd 46%, #d4e7f2 49%, #eff9ff); box-shadow: inset 0 1px #fff, 0 1px 2px rgba(12, 60, 87, 0.1); text-shadow: 0 1px #fff; transition: border-color 140ms, box-shadow 140ms; }
+.aero-button:hover { color: #073d60; border-color: #4a9ac1; background: linear-gradient(#fff, #e3f6ff 46%, #bcdff3 49%, #e7f7ff); box-shadow: inset 0 1px #fff, 0 0 8px rgba(44, 155, 211, 0.28); text-decoration: none; }
+.aero-button:active { background: linear-gradient(#b7d4e5, #e1f2fc); box-shadow: inset 0 1px 3px rgba(14, 71, 104, 0.22); }
+.aero-button .aero-icon { width: 19px; height: 19px; }
+.aero-button span { min-width: 0; overflow-wrap: anywhere; }
+.aero-button i { width: 19px; text-align: center; }
+
+.aero-home-grid { margin-left: -10px; margin-right: -10px; }
+.aero-home-grid > div { padding-left: 10px; padding-right: 10px; }
+.aero-profile-sidebar { position: sticky; top: 1rem; }
+.aero-profile-top { display: flex; justify-content: center; align-items: center; padding: 22px; background: linear-gradient(rgba(195, 227, 224, 0.15), rgba(204, 227, 232, 0.35)), url('../aero/backgrounds/web/grass-bokeh-800.webp') center / cover; border-bottom: 1px solid #a9c4c9; }
+.aero-portrait { width: 148px; height: 148px; object-fit: cover; border: 5px solid #f6fcff; border-radius: 7px; box-shadow: 0 0 0 1px #8daabb, 0 4px 12px rgba(0, 39, 49, 0.25); }
+.aero-profile-card .aero-panel-body { padding: 20px 16px; }
+.aero-profile-name { font-size: 1.5rem; margin-bottom: 8px; font-weight: 400; color: #234c68; }
+.aero-profile-name small { display: block; margin-top: 5px; color: var(--aero-muted); }
+.text-profile-position { font-size: 0.875rem; line-height: 1.7; }
+.text-profile-bio { font-size: 1rem; line-height: 1.75; }
+.aero-profile-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.aero-profile-card .aero-profile-links { flex-direction: column; }
+.aero-profile-card .aero-button { justify-content: flex-start; }
+.aero-profile-wide .aero-portrait { float: right; width: 184px; height: 184px; margin: 0 0 20px 24px; }
+.aero-profile-wide .aero-panel-body::after { content: ""; display: table; clear: both; }
+.email-text { font-family: ui-monospace, "Cascadia Code", "Courier New", monospace; font-size: 0.875rem; }
+.inline-badge { height: 18px; width: auto; vertical-align: -12%; margin-right: 5px; }
+
+.aero-experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+.aero-experience-list, .aero-awards-list { padding: 0; margin: 0; list-style: none; font-size: 0.875rem; }
+.aero-experience-list li { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 18px; }
+.aero-experience-list li:last-child { margin-bottom: 0; }
+.aero-institution-logo { width: 26px; height: 26px; object-fit: contain; margin-top: 2px; }
+.aero-experience-detail { min-width: 0; }
+.aero-date { display: block; color: var(--aero-muted); font-size: 0.875rem; }
+.aero-awards-list li { display: flex; align-items: baseline; gap: 15px; padding-bottom: 10px; }
+.aero-awards-list li > :first-child { flex: 1; }
+.aero-news-group { display: flex; gap: 20px; }
+.aero-news-group + .aero-news-group { border-top: 1px solid #dce7ed; padding-top: 10px; margin-top: 10px; }
+.aero-year-label { margin: 5px 0 0; min-width: 42px; color: #32627d; font-size: 0.875rem; font-weight: 600; }
+.aero-news-items { flex: 1; min-width: 0; }
+.aero-news-item { display: flex; gap: 16px; padding: 4px 0; font-size: 0.875rem; }
+.aero-news-item > div { flex: 1; min-width: 0; }
+.aero-news-item time { flex-shrink: 0; color: var(--aero-muted); }
+
+.aero-publication { display: flex; gap: 20px; padding: 24px; }
+.aero-item-divider { border-bottom: 1px solid #d4e3ec; }
+.aero-publication-cover { flex: 0 0 150px; padding-top: 3px; }
+.aero-publication-cover img, .aero-publication-cover svg { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border: 4px solid #fff; border-radius: 5px; outline: 1px solid #b5cbd8; background: #e7f3fa; box-shadow: 0 2px 5px rgba(27, 67, 91, 0.13); }
+.aero-publication-body { flex: 1; min-width: 0; }
+.aero-publication h3 { font-size: 1.0625rem; font-weight: 600; color: #204d6b; margin: 0 0 7px; }
+.aero-authors { font-size: 0.875rem; margin: 0 0 4px; }
+.aero-venue { font-size: 0.875rem; margin: 0 0 10px; }
+.aero-abstract { color: #4b6373; font-size: 0.875rem; line-height: 1.65; }
+.aero-publication-links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+.badge-publication { font-size: 0.8125rem; }
+.badge-success { color: #245323; background: linear-gradient(#e8f6d8, #c4e4ae); border: 1px solid #86b371; }
+.badge-light { color: #31536a; background: linear-gradient(#f4faff, #dcebf5); border: 1px solid #b9cede; font-weight: 400; }
+
+.aero-archive-layout { display: grid; grid-template-columns: minmax(0, 1fr) 144px; gap: 22px; }
+.aero-archive-main, .aero-archive-sidebar { min-width: 0; }
+.aero-archive-year { font-size: 1.5rem; font-weight: 400; color: #fff; margin: 24px 0 12px; text-shadow: 0 1px 2px rgba(5, 31, 50, 0.95), 0 0 8px rgba(5, 31, 50, 0.5); }
+.aero-archive-year:first-child { margin-top: 0; }
+.aero-year-nav { position: sticky; top: 1rem; padding-bottom: 8px; }
+.aero-year-nav .aero-panel-title { font-size: 0.875rem; margin-bottom: 6px; }
+.aero-year-link { display: block; padding: 6px 12px; border: 1px solid transparent; border-radius: 4px; margin: 3px 8px; font-size: 0.9375rem; }
+.aero-year-link.active { border-color: #8eb9d0; color: #164e70; background: linear-gradient(#f4fcff, #cae5f4); box-shadow: inset 0 1px #fff; }
+.aero-year-link:hover { text-decoration: none; background: #e0f0f9; }
+.aero-blog-card { padding: 22px 24px; }
+.aero-blog-card h3 { font-size: 1.25rem; }
+.aero-blog-title { color: #204d6b; }
+.aero-blog-title:hover { color: #116594; }
+.aero-back-link { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 5px; background: rgba(245, 252, 255, 0.9); font-size: 0.875rem; }
+
+.aero-gallery .card { border: 1px solid var(--aero-line); border-radius: var(--aero-radius); box-shadow: var(--aero-shadow); overflow: hidden; background: var(--aero-paper); }
+.aero-gallery img { vertical-align: middle; }
+.aero-gallery-card > img, .aero-gallery-card > div > img { padding: 5px; }
+.card, .card-img-overlay, .rounded-xl { border-radius: var(--aero-radius); }
+.rounded-xl-bottom { border-bottom-right-radius: var(--aero-radius); border-bottom-left-radius: var(--aero-radius); }
+.rounded-xl-top { border-top-right-radius: var(--aero-radius); border-top-left-radius: var(--aero-radius); }
+.cover-image { width: 180px; max-height: 120px; }
+.abstract-body { min-height: 100px; }
+.no-break { white-space: nowrap; }
+img.lazy, div.lazy { background-image: url('images/loading.gif'); background-repeat: no-repeat; background-position: 50% 50%; background-size: 50px 50px; min-height: 80px; }
+
+.aero-footer { border-top: 1px solid #9cbace; border-radius: 0 0 7px 7px; background: linear-gradient(#f6fbff, #deebf4); padding: 14px 22px; color: #4b6678; font-size: 0.875rem; }
+.aero-status-strip { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; }
+.aero-credits { margin-top: 8px; }
+.aero-credits summary { width: fit-content; cursor: pointer; color: #315e7a; }
+.aero-credits p { margin: 10px 0 0; }
+.aero-prompt { text-align: center; padding: 48px 24px; }
+.aero-error-number { font-size: 4rem; font-weight: 300; color: #265c7d; margin: 16px 0; }
+
+/* Preserve carousel controls and their visible keyboard focus. */
+.carousel button { -webkit-appearance: none; appearance: none; border-radius: 0; box-shadow: none; }
+.carousel-control-prev, .carousel-control-next { padding: 0; background: transparent; border: 0; }
+.carousel-indicators button { box-sizing: content-box; flex: 0 1 auto; width: 30px; height: 3px; padding: 0; margin: 0 3px; cursor: pointer; background-color: #fff; background-clip: padding-box; border: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; opacity: 0.5; transition: opacity 140ms; }
+.carousel-indicators button.active { opacity: 1; }
+.carousel-indicators button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.4); }
+.carousel-control-prev:focus-visible .carousel-control-prev-icon, .carousel-control-next:focus-visible .carousel-control-next-icon { outline: 2px solid #fff; outline-offset: 4px; border-radius: 2px; box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.4); }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .aero-window { background: #c3dbe9; }
+    .aero-main { background: #e1eef5; }
+    .aero-header { background: linear-gradient(#3d7192, #153e5d); }
+    .aero-archive-year { color: #204d69; text-shadow: none; }
+}
+@media (max-width: 991.98px) {
+    .aero-desktop { padding: 16px 12px 24px; }
+    .aero-main { padding: 18px; }
+    .aero-archive-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .aero-archive-sidebar { grid-row: 1; }
+    .aero-year-nav { display: flex; flex-wrap: wrap; align-items: center; padding: 5px; }
+    .aero-year-nav .aero-panel-title { margin: 0 8px 0 0; padding: 5px 10px; min-height: 32px; background: none; border: 0; }
+    .aero-year-link { margin: 2px; }
+    .aero-publication { gap: 16px; padding: 20px; }
+    .aero-publication-cover { flex-basis: 118px; }
+}
+@media (max-width: 767.98px) {
+    body::before { background-image: linear-gradient(135deg, rgba(12, 85, 77, 0.24), rgba(4, 42, 75, 0.12)), url('../aero/backgrounds/web/blue-ribbons-960.webp'); }
+    .aero-affiliation { display: none; }
+    .aero-title-strip { padding: 9px 12px; }
+    .aero-brand { font-size: 1rem; }
+    .aero-js .aero-menu-button { display: inline-flex; flex-shrink: 0; }
+    .aero-js .aero-nav-links:not(.show) { display: none; }
+    .aero-js .aero-navigation:has(.aero-nav-links:not(.show)) { padding-top: 0; padding-bottom: 0; border-top: 0; }
+    .aero-nav-links li { flex: 1 1 calc(50% - 5px); }
+    .aero-nav-link { min-height: 44px; padding: 7px 10px; }
+    .aero-main { padding: 14px; }
+    .aero-masthead { min-height: 82px; padding: 16px 18px; margin-bottom: 16px; }
+    .aero-masthead h1 { font-size: 1.5rem; }
+    .aero-icon--large { width: 40px; height: 40px; }
+    .aero-profile-sidebar { position: static; margin-bottom: 16px; }
+    .aero-profile-card { display: grid; grid-template-columns: 132px minmax(0, 1fr); }
+    .aero-profile-top { padding: 18px 12px; border-bottom: 0; border-right: 1px solid #a9c4c9; align-items: flex-start; }
+    .aero-profile-card .aero-portrait { width: 104px; height: 104px; border-width: 4px; }
+    .aero-profile-card .aero-panel-body { padding: 16px; }
+    .aero-profile-card .aero-profile-links { margin-top: 12px; gap: 6px; }
+    .aero-profile-name { font-size: 1.25rem; }
+    .aero-button { min-height: 40px; }
+    .aero-panel-body { padding: 18px; }
+    .aero-panel-title { padding: 9px 12px; flex-wrap: wrap; }
+    .aero-title-link { font-size: 0.875rem; }
+    .aero-experience-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .aero-publication-cover { flex-basis: 100px; }
+    .aero-publication h3 { font-size: 1rem; }
+    .aero-footer { padding: 14px; }
+}
+@media (max-width: 575.98px) {
+    .aero-desktop { padding: 8px 6px 16px; }
+    .aero-window { padding: 4px; border-radius: 10px; }
+    .aero-main { padding: 12px; }
+    .aero-profile-card { display: block; }
+    .aero-profile-top { height: 144px; align-items: center; border-right: 0; border-bottom: 1px solid #a9c4c9; }
+    .aero-profile-card .aero-portrait { width: 116px; height: 116px; }
+    .aero-profile-card .aero-profile-links { flex-direction: row; }
+    .aero-profile-card .aero-profile-links > :first-child { flex-basis: 100%; }
+    .aero-profile-card .aero-button { padding-left: 9px; padding-right: 9px; }
+    .aero-profile-wide .aero-portrait { width: 108px; height: 108px; margin: 0 0 12px 14px; }
+    .aero-publication { display: block; padding: 18px; }
+    .aero-publication-cover { width: 126px; float: right; margin: 0 0 12px 14px; }
+    .aero-publication::after { content: ""; display: table; clear: both; }
+    .aero-publication-links { clear: both; }
+    .aero-news-group { gap: 12px; }
+    .aero-news-item { flex-wrap: wrap; gap: 0 8px; }
+    .aero-news-item time { font-size: 0.875rem; }
+    .aero-blog-card { padding: 18px; }
+    .no-break { white-space: normal; }
+}
 @media (prefers-reduced-motion: reduce) {
-    .carousel-indicators button {
-        transition: none;
-    }
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+@media print {
+    body { color: #000; background: #fff; font-size: 11pt; }
+    body::before, body::after, .aero-header, .aero-skip-link, .aero-archive-sidebar, .blog-toc-sidebar, .aero-credits { display: none !important; }
+    .aero-desktop, .aero-window, .aero-main { padding: 0; margin: 0; max-width: none; background: #fff; box-shadow: none; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .aero-masthead, .aero-profile-top, .aero-panel-title, .aero-footer { color: #000; background: #fff; text-shadow: none; box-shadow: none; }
+    .aero-masthead h1 { color: #000; text-shadow: none; }
+    .aero-archive-year { color: #000; text-shadow: none; }
+    .aero-panel, .aero-gallery .card { background: #fff; box-shadow: none; border-color: #ccc; }
+    .aero-profile-sidebar, .aero-year-nav { position: static; }
+    .aero-publication { break-inside: avoid; }
+    .aero-archive-layout { display: block; }
+    .aero-button { background: #fff; color: #000; box-shadow: none; text-shadow: none; }
+    .aero-gallery { height: auto !important; }
+    .aero-gallery .grid-item { position: static !important; transform: none !important; }
 }

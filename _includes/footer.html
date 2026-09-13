@@ -1,16 +1,11 @@
-<footer class="footer flex-shrink-0 border-top py-2 mt-5 bg-white small">
-    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
-        <div class="row my-3">
-            <div class="col-6">
-                <div class="text-muted">
-                    <i>Last updated: {{ "now" | date: "%b %Y" }}</i>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="text-right text-muted">
-                    {{ site.data.display.footer_text }}
-                </div>
-            </div>
-        </div>
+<footer class="aero-footer">
+    <div class="aero-status-strip">
+        <span>Last updated: {{ "now" | date: "%b %Y" }}</span>
+        <span>{{ site.data.display.footer_text }}</span>
     </div>
+    <details class="aero-credits">
+        <summary>Artwork credits</summary>
+        <p><a href="https://develop.kde.org/frameworks/oxygen-icons/">Oxygen icons © KDE/Oxygen contributors</a>, LGPLv3 or later. <a href="https://github.com/KDE/plasma-workspace-wallpapers/tree/92cba26d1a117554aa54ed839a481ba657dee5d6/Elarun">Elarun wallpaper by Nuno Pinheiro</a>, LGPLv3. <a href="https://www.publicdomainpictures.net/en/view-image.php?image=242003&amp;picture=grass-background">Grass photograph by Karen Arnold</a>, CC0.</p>
+        <p><a href="{{ '/assets/aero/licenses/oxygen/LICENSES/LGPL-3.0-or-later.txt' | relative_url }}">LGPLv3 / GPLv3 license</a> · <a href="{{ '/assets/aero/licenses/oxygen/LICENSES/CC0-1.0.txt' | relative_url }}">CC0 license</a> · <a href="{{ '/assets/aero/manifest.json' | relative_url }}">Asset sources and original vector downloads</a></p>
+    </details>
 </footer>

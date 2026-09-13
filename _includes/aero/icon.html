@@ -1,0 +1,4 @@
+{% assign icon_path = '/assets/aero/icons/' %}
+{% assign icon_size = '32/' %}{% assign retina_size = '64/' %}
+{% if include.class == 'aero-icon--large' %}{% assign icon_size = '64/' %}{% assign retina_size = '128/' %}{% endif %}
+<img class="aero-icon {{ include.class }}" src="{{ icon_path | append: icon_size | append: include.name | append: '.png' | relative_url }}" srcset="{{ icon_path | append: retina_size | append: include.name | append: '.png' | relative_url }} 2x" width="32" height="32" alt="" aria-hidden="true">

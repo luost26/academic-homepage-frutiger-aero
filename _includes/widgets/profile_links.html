@@ -1,0 +1,30 @@
+<div class="aero-profile-links">
+    {% if site.data.profile.email %}
+    <a class="aero-button" href="mailto:{{ site.data.profile.email | encode_email }}">
+        {% include aero/icon.html name='email' %}<span class="email-text">{{ site.data.profile.email | replace: '@', '(at)' | escape }}</span>
+    </a>
+    {% endif %}
+    {% if site.data.profile.gscholar %}
+        {% if site.data.profile.gscholar contains 'scholar.google' %}
+            {% assign gscholar_url = site.data.profile.gscholar %}
+        {% else %}
+            {% assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: site.data.profile.gscholar %}
+        {% endif %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="{{ gscholar_url }}">{% include aero/icon.html name='website' %} Google Scholar</a>
+    {% endif %}
+    {% if site.data.profile.github %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.data.profile.github }}">{% include aero/icon.html name='code' %} GitHub</a>
+    {% endif %}
+    {% if site.data.profile.twitter %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="https://twitter.com/{{ site.data.profile.twitter }}"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
+    {% endif %}
+    {% if site.data.profile.linkedin %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+    {% endif %}
+    {% if site.data.profile.orcid %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="https://orcid.org/{{ site.data.profile.orcid }}"><i class="fab fa-orcid" aria-hidden="true"></i> ORCID</a>
+    {% endif %}
+    {% if site.data.profile.cv_link %}
+    <a class="aero-button" target="_blank" rel="noopener noreferrer" href="{{ site.data.profile.cv_link | relative_url }}">{% include aero/icon.html name='download' %} Curriculum Vitae</a>
+    {% endif %}
+</div>

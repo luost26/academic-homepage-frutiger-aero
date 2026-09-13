@@ -1,14 +1,10 @@
 {% assign publications = include.publications %}
-<div class="my-3 p-0 bg-white shadow-sm rounded-xl">
-    <h6 class="border-bottom border-gray p-3 mb-0">
-        {% if include.title %}{{ include.title }}{% else %}<i class="fas fa-star"></i> Selected Recent Publications{% endif %} 
-        <a href="{{ 'publications' | relative_url }}">(view all <i class="fas fa-angle-double-right"></i>)</a>
-    </h6>
+<section class="aero-panel my-3" aria-labelledby="selected-publications-title">
+    <header class="aero-panel-title">
+        {% include aero/icon.html name='selected' %}<h2 id="selected-publications-title">{{ include.title | default: 'Selected Recent Publications' }}</h2>
+        <a class="aero-title-link" href="{{ '/publications' | relative_url }}">View all <span aria-hidden="true">›</span></a>
+    </header>
     {% for item in publications limit:include.limit %}
-        {% include widgets/publication_item.html item=item first=false last=false %}    
+        {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last %}
     {% endfor %}
-    <h6 class="d-block p-3 mt-0 text-right">
-        <a href="{{ 'publications' | relative_url }}">All publications <i class="fas fa-angle-double-right"></i></a>
-    </h6>
-</div>
-
+</section>

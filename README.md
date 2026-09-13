@@ -10,6 +10,20 @@
 
 A GitHub Pages (Jekyll) template for personal academic website. Click [here](https://luost26.github.io/academic-homepage/) to see the demo.
 
+## Frutiger Aero theme
+
+This version uses a Vista-inspired frosted glass frame and translucent page body, reflective navigation and section headers, glossy Oxygen icons, and pale reading surfaces over blue light ribbons. A compact grass banner adds the nature imagery associated with Frutiger Aero.
+
+Personalize the same YAML files in `_data/` and Markdown collections as before. The homepage, publication and blog archives, blog articles, Showcase, and the error page share `_layouts/default.html` and the same 1280px maximum frame width.
+
+- Change colors, glass opacity, spacing, and borders through the CSS variables and theme rules in `assets/css/global.css`. `--aero-glass-blur` controls the frosted backdrop; the frame and page body gradients control its tint and reflections.
+- Blog reading styles and the contents sidebar are in `assets/css/blog.css`.
+- Shared theme helpers are in `_includes/aero/`; navigation entries may optionally specify an `icon` matching a filename in `assets/aero/icons/32/`.
+- Small WebP background variants are in `assets/aero/backgrounds/web/`. Original downloads, vector sources, credits, and license information are documented in [the asset kit](assets/aero/README.md).
+- The mobile navigation menu and active year links are handled by `assets/js/aero.js`. The header scrolls with the page, and section links use native browser navigation. The theme includes visible keyboard focus, reduced-motion styles, an opaque blur fallback, and print styles.
+
+Run `bundle exec jekyll serve` to preview the theme locally. Keep the artwork credits and license/source links when reusing the downloaded assets.
+
 ## User Community
 
 [🏡](https://luost.me/)
@@ -86,4 +100,3 @@ If you run into **any** issues while using this template, or have suggestions fo
 2. Go to the repository settings and enable GitHub Pages. Detailed instructions can be found [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-your-site).
 
 3. Navigate to your created website, and follow the instructions displayed on the homepage (if any) to finalize the setup.
-
