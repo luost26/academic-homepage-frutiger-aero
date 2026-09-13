@@ -35,12 +35,13 @@ Run `bundle exec jekyll serve` to preview the theme locally. Keep the artwork cr
 
 ## Acknowledgements
 
-The improvements of this template have been inspired by the customizations and feedbacks from the following users:
+The Frutiger Aero theme uses artwork from the following creators and projects:
 
-- 😼 [onethousandwu.com](https://onethousandwu.com/): increased corner radius [[Repo]](https://github.com/oneThousand1000/oneThousand1000.github.io)
-- :star: [shiwonkim.github.io](https://shiwonkim.github.io/): two-column main page layout [[Repo]](https://github.com/shiwonkim/shiwonkim.github.io)
-- :star: [yqxie99.github.io](https://yqxie99.github.io/): blog feature [[Repo]](https://github.com/YQXie99/YQXie99.github.io/tree/feat/add_blog_page)
-- :star: [kwen-chen.github.io](https://kwen-chen.github.io/): blog feature [[Repo]](https://github.com/Kwen-Chen/Kwen-Chen.github.io)
+- [Oxygen icons](https://invent.kde.org/frameworks/oxygen-icons) © KDE/Oxygen contributors — glossy navigation and section icons, licensed under [LGPL-3.0-or-later](assets/aero/licenses/oxygen/LICENSES/LGPL-3.0-or-later.txt).
+- [Elarun wallpaper](https://github.com/KDE/plasma-workspace-wallpapers/tree/92cba26d1a117554aa54ed839a481ba657dee5d6/Elarun) by Nuno Pinheiro — the blue light-ribbon backdrop, licensed under [LGPLv3](assets/aero/licenses/wallpapers/COPYING.LGPL3).
+- [Grass Background](https://www.publicdomainpictures.net/en/view-image.php?image=242003&picture=grass-background) by Karen Arnold — the grass and bokeh imagery, dedicated to the public domain under [CC0-1.0](assets/aero/licenses/oxygen/LICENSES/CC0-1.0.txt).
+
+See the [asset kit](assets/aero/README.md#sources-and-credits) for full credits and the [asset manifest](assets/aero/manifest.json) for exact sources and derivative details. Keep these credits and the bundled license/source files when reusing the artwork.
 
 ## Need Help?
 
