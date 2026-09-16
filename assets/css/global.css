@@ -75,7 +75,6 @@ img { max-width: 100%; }
 .aero-title-strip { display: flex; align-items: center; gap: 18px; min-height: 53px; padding: 8px 18px; }
 .aero-brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 1.125rem; font-weight: 600; text-shadow: 0 1px 3px #133551; min-width: 0; }
 .aero-brand span { overflow-wrap: anywhere; }
-.aero-brand:visited { color: #fff; }
 .aero-brand:hover { color: #fff; text-decoration: none; }
 .aero-brand:focus-visible { outline-color: #fff; }
 .aero-affiliation { margin-left: auto; color: #fff; font-size: 0.875rem; text-shadow: 0 1px 3px #173e57; }
